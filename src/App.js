@@ -1,24 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+import Counter from "./components/counter/counter";
+import AddItem from "./components/add-item/add-item";
+import Movie from "./components/movie/movie";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Đếm số lần nhấn</Link>
+            </li>
+            <li>
+              <Link to="/add-item">Add Item</Link>
+            </li>
+            <li>
+              <Link to="/movie">Thêm phim</Link>
+            </li>
+          </ul>
+        </nav>
+
+        <Switch>
+          <Route path="/add-item">
+            <AddItem />
+          </Route>
+          <Route path="/movie">
+            <Movie />
+          </Route>
+          <Route path="/">
+            <Counter />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
